@@ -11,7 +11,7 @@
 | last_name       | string | null: false               |
 | first_name_kana | string | null: false               |
 | last_name_kana  | string | null: false               |
-| birthday_id     | date   | null: false               |
+| birthday        | date   | null: false               |
 
 ### Association
 has_many :items dependent: :destroy
@@ -19,16 +19,17 @@ has_many :purchases
 
 ## Items テーブル
 
-| Column                 | Type    | Options     |
-| ---------------------- | ------- | ----------- |
-| name                   | string  | null: false |
-| info                   | text    | null: false |
-| price                  | integer | null: false |
-| category_id            | integer | null: false |
-| sales_status_id        | integer | null: false |
-| shopping_fee_status_id | integer | null: false |
-| prefecture_id          | integer | null: false |
-| scheduled_delivery_id  | integer | null: false |
+| Column                 | Type       | Options                        |
+| ---------------------- | ---------- | ------------------------------ |
+| name                   | string     | null: false                    |
+| info                   | text       | null: false                    |
+| price                  | integer    | null: false                    |
+| category_id            | integer    | null: false                    |
+| sales_status_id        | integer    | null: false                    |
+| shopping_fee_status_id | integer    | null: false                    |
+| prefecture_id          | integer    | null: false                    |
+| scheduled_delivery_id  | integer    | null: false                    |
+| user                   | references | null: false, foreign_kye: true |
 
 ### Association
 belongs_to :user

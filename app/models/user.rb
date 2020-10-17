@@ -10,11 +10,11 @@ class User < ApplicationRecord
 
   validates :password, length: { minimum: 6 }, format: { with: PASSWORD_REGEX }
   with_options presence: true do
-  validates :nickname, uniqueness: true
-  validates :first_name, format: { with: ZENKAKU_REGEX }
-  validates :last_name, format: { with: ZENKAKU_REGEX }
-  validates :first_name_kana, format: { with: KANA_REGEX }
-  validates :last_name_kana, format: { with: KANA_REGEX }
-  validates :birthday
+    validates :nickname, uniqueness: true
+    validates :first_name, format: { with: ZENKAKU_REGEX }
+    validates :last_name, format: { with: ZENKAKU_REGEX }
+    validates :first_name_kana, format: { with: KANA_REGEX }
+    validates :last_name_kana, format: { with: KANA_REGEX }
+    validates :birthday
   end
 end

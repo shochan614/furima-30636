@@ -9,10 +9,12 @@ class User < ApplicationRecord
   KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze # 全角カナ
 
   validates :password, length: { minimum: 6 }, format: { with: PASSWORD_REGEX }
-  validates :nickname, presence: true, uniqueness: true
-  validates :first_name, presence: true, format: { with: ZENKAKU_REGEX }
-  validates :last_name, presence: true, format: { with: ZENKAKU_REGEX }
-  validates :first_name_kana, presence: true, format: { with: KANA_REGEX }
-  validates :last_name_kana, presence: true, format: { with: KANA_REGEX }
-  validates :birthday, presence: true
+  with_options presence: true do
+  validates :nickname, uniqueness: true
+  validates :first_name, format: { with: ZENKAKU_REGEX }
+  validates :last_name, format: { with: ZENKAKU_REGEX }
+  validates :first_name_kana, format: { with: KANA_REGEX }
+  validates :last_name_kana, format: { with: KANA_REGEX }
+  validates :birthday
+  end
 end

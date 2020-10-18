@@ -1,10 +1,12 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :category
 
   with_options presence: true do
     validates :name
     validates :info
     validates :price
-    validates :category_id
+    validates :category_id, numericality: { other_than: 1 } 
     validates :sales_status_id
     validates :shopping_fee_status_id
     validates :prefecture_id
@@ -12,4 +14,5 @@ class Item < ApplicationRecord
   end
 
   belongs_to :user
+
 end

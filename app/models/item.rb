@@ -7,8 +7,10 @@ class Item < ApplicationRecord
     validates :name
     validates :info
     validates :price
-    validates :category_id, numericality: { other_than: 1 } 
-    validates :sales_status_id
+      with_options numericality: { other_than: 1 } do
+      validates :category_id 
+      validates :sales_status_id
+      end
     validates :shopping_fee_status_id
     validates :prefecture_id
     validates :scheduled_delivery_id

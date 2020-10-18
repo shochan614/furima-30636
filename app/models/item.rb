@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :sales_status
+  belongs_to_active_hash :shopping_fee_status
 
   with_options presence: true do
     validates :name

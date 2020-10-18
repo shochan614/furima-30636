@@ -1,0 +1,2 @@
+class ShoppingFeeStatus < ApplicationRecord
+end

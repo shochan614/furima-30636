@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :category
   belongs_to_active_hash :sales_status
   belongs_to_active_hash :shopping_fee_status
+  belongs_to_active_hash :prefecture
 
   with_options presence: true do
     validates :name
@@ -12,7 +13,7 @@ class Item < ApplicationRecord
       validates :category_id 
       validates :sales_status_id
       validates :shopping_fee_status_id
-      end
+    end
     validates :prefecture_id
     validates :scheduled_delivery_id
   end

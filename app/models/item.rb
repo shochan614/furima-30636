@@ -6,10 +6,12 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :scheduled_delivery
 
+  
   with_options presence: true do
     validates :name
     validates :info
-    validates :price
+    validates :price, format: { with: /\A[0-9]+\z/ }, inclusion: {in: 300..9999999 } 
+    validates :image
       with_options numericality: { other_than: 1 } do
       validates :category_id 
       validates :sales_status_id

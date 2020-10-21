@@ -6,14 +6,13 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :scheduled_delivery
 
-  
   with_options presence: true do
     validates :name
     validates :info
-    validates :price, format: { with: /\A[0-9]+\z/ }, inclusion: {in: 300..9999999 } 
+    validates :price, format: { with: /\A[0-9]+\z/ }, inclusion: { in: 300..9_999_999 }
     validates :image
-      with_options numericality: { other_than: 1 } do
-      validates :category_id 
+    with_options numericality: { other_than: 1 } do
+      validates :category_id
       validates :sales_status_id
       validates :shopping_fee_status_id
       validates :prefecture_id
@@ -23,5 +22,4 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
-
 end

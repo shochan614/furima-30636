@@ -55,5 +55,6 @@ end
 
 def move_to_index
   @item = Item.find(params[:id])
-  redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
+  unless user_signed_in? && current_user.id == @item.user_id
+  redirect_to root_path 
 end

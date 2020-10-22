@@ -1,0 +1,27 @@
+<header class="top-page-header">
+  <div class="search-bar-contents">
+    <img class="furima-icon" src="/assets/furima-logo-color.png">
+    <div class="furima-icon"></div>
+    <div class="search-form">
+      <input class="input-box" placeholder="キーワードから探す">
+      <button class="search-button">
+        <img class="search-icon" src="/assets/search.png">
+      </button>
+    </div>
+  </div>
+  <div class="nav">
+    <ul class="lists-left">
+      <li><a class="category-list" href="#">カテゴリー</a></li>
+      <li><a class="brand-list" href="#">ブランド</a></li>
+    </ul>
+    <ul class="lists-right">
+      <% if user_signed_in? %>
+        <%= link_to current_user.nickname, root_path, class: :user_nickname %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: :logout %>
+      <% else %>
+        <%= link_to 'ログイン', new_user_session_path, class: :login %>
+        <%= link_to '新規登録', new_user_registration_path, class: :sign_up %>
+      <% end %>
+    </ul>
+  </div>
+</header>

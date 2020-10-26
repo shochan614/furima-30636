@@ -1,6 +1,6 @@
 class UserOrder
   include ActiveModel::Model
-  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :building_name
+  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :building_name, :token
 
 
   #addressのバリデーション
@@ -10,6 +10,7 @@ class UserOrder
     validates :city
     validates :house_number
     validates :phone_number, format: { with: /\A\d{10,11}\z/ }
+    validates :token
   end
 
   def save

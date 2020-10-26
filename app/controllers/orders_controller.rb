@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
-  
+  before_action :move_to_index, only: :index
   def index
     @purchase = Purchase.new
     @item = Item.find(params[:item_id])
@@ -32,6 +32,13 @@ class OrdersController < ApplicationController
         card: user_order_params[:token],    # カードトークン
         currency: 'jpy'                 # 通貨の種類（日本円）
       )
+  end
+
+  def move_to_index
+    @item = Item.find(params[:item_id])
+    if user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path
+    end
   end
   
 end

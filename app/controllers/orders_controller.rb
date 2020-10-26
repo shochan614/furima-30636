@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create]
+  before_action :reject
+  before_action :authenticate_user!
   before_action :move_to_index, only: :index
   def index
     @purchase = Purchase.new
@@ -37,6 +38,13 @@ class OrdersController < ApplicationController
   def move_to_index
     @item = Item.find(params[:item_id])
     if user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path
+    end
+  end
+
+  def reject
+    @item = Item.find(params[:item_id])
+    if Purchase.exists?(item_id: @item.id)
       redirect_to root_path
     end
   end
